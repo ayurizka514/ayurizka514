@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pink Tulip Garden</title>
+    <style>
+        :root {
+            --soft-pink: #fbc2eb;
+            --deep-pink: #ff758f;
+            --leaf-green: #7fb069;
+            --stem-green: #4b7d44;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            /* Langit taman yang cerah */
+            background: linear-gradient(135deg, #fdfcfb 0%, #fbc2eb 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Hamparan Rumput/Tanah Taman */
+        .ground {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 25vh;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border-top: 2px solid rgba(255, 255, 255, 0.5);
+            z-index: 10;
+        }
+
+        .garden {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            padding-bottom: 10vh;
+            z-index: 5;
+        }
+
+        /* Struktur Tulip Dewasa */
+        .tulip-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: gentleSway 5s ease-in-out infinite;
+            transform-origin: bottom;
+        }
+
+        .stem {
+            width: 7px;
+            height: 200px;
+            background: linear-gradient(to top, var(--stem-green), var(--leaf-green));
+            border-radius: 10px;
+            position: relative;
+        }
+
+        /* Kelopak Bunga (Mature Pink) */
+        .flower-head {
+            position: absolute;
+            top: -65px;
+            width: 60px;
+            height: 75px;
+        }
+
+        .petal {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50% 50% 20% 20% / 80% 80% 20% 20%;
+            background: linear-gradient(to bottom, var(--deep-pink), #ffb3c1);
+            box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .petal.back { transform: scale(0.9) translateY(-5px); filter: brightness(0.8); z-index: 1; }
+        .petal.left { transform: rotate(-25deg) translateX(-12px); z-index: 2; }
+        .petal.right { transform: rotate(25deg) translateX(12px); z-index: 2; }
+        .petal.center { transform: scaleX(0.8); z-index: 3; filter: brightness(1.1); }
+
+        /* Daun yang melengkung menyatu ke batang */
+        .leaf {
+            position: absolute;
+            width: 70px;
+            height: 35px;
+            background: linear-gradient(to right, var(--leaf-green), #a3cf95);
+            border-radius: 0 100px 0 100px;
+            z-index: 4;
+            box-shadow: 2px 5px 10px rgba(0,0,0,0.1);
+        }
+
+        .leaf-left { bottom: 40px; left: 5px; transform: rotate(-30deg); }
+        .leaf-right { bottom: 80px; right: 5px; transform: scaleX(-1) rotate(-20deg); }
+
+        /* Animasi Lope-lope (Hati Pink) */
+        .pink-heart {
+            position: absolute;
+            color: #ff4d6d;
+            font-size: 20px;
+            pointer-events: none;
+            z-index: 100;
+            animation: floatUp linear forwards;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(0.5); opacity: 0; }
+            20% { opacity: 0.8; }
+            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes gentleSway {
+            0%, 100% { transform: rotate(-2deg) translateX(0); }
+            50% { transform: rotate(2deg) translateX(5px); }
+        }
+
+        .title {
+            position: absolute;
+            top: 50px;
+            width: 100%;
+            text-align: center;
+            color: #d81b60;
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-shadow: 0 2px 5px rgba(255,255,255,0.8);
+            z-index: 20;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="title">My Pink Tulip Garden 🌸</div>
+    <div class="ground"></div>
+
+    <div class="garden">
+        <div class="tulip-container" style="animation-delay: 0s;">
+            <div class="flower-head">
+                <div class="petal back"></div>
+                <div class="petal left"></div>
+                <div class="petal right"></div>
+                <div class="petal center"></div>
+            </div>
+            <div class="stem">
+                <div class="leaf leaf-left"></div>
+                <div class="leaf leaf-right"></div>
+            </div>
+        </div>
+
+        <div class="tulip-container" style="animation-delay: -1.5s;">
+            <div class="flower-head">
+                <div class="petal back"></div>
+                <div class="petal left"></div>
+                <div class="petal right"></div>
+                <div class="petal center"></div>
+            </div>
+            <div class="stem" style="height: 280px;">
+                <div class="leaf leaf-left" style="bottom: 60px;"></div>
+                <div class="leaf leaf-right" style="bottom: 120px;"></div>
+            </div>
+        </div>
+
+        <div class="tulip-container" style="animation-delay: -3s;">
+            <div class="flower-head">
+                <div class="petal back"></div>
+                <div class="petal left"></div>
+                <div class="petal right"></div>
+                <div class="petal center"></div>
+            </div>
+            <div class="stem" style="height: 230px;">
+                <div class="leaf leaf-left"></div>
+                <div class="leaf leaf-right"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function spawnHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'pink-heart';
+            // Variasi emoji hati dan bunga
+            const icons = ['❤️', '💖', '🌸', '🌷', '✨'];
+            heart.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+            
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.bottom = '20vh';
+            
+            const size = Math.random() * 20 + 10;
+            heart.style.fontSize = size + 'px';
+            
+            const duration = Math.random() * 3 + 4;
+            heart.style.animationDuration = duration + 's';
+            
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+
+        // Interval otomatis
+        setInterval(spawnHeart, 500);
+
+        // Klik untuk ledakan hati
+        document.addEventListener('click', () => {
+            for(let i=0; i<10; i++) {
+                setTimeout(spawnHeart, i * 50);
+            }
+        });
+    </script>
+</body>
+</html>
